@@ -1,118 +1,126 @@
-<html>
-    <head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-        *{
-            margin: 0px;
-            padding: 0px;
-            
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-        td{
+
+        body {
+            font-family: Arial, sans-serif;
             text-align: center;
-            font-size: 30px;
+            background-color: #f4f4f9;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #444;
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        table {
+            margin: 20px auto;
+            border-spacing: 30px;
+        }
+
+        td {
+            text-align: center;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        img {
+            border-radius: 10px;
+        }
+
+        .roll-button {
+            display: inline-block;
+            margin: 20px;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: white;
+            background: linear-gradient(90deg, #4CAF50, #81C784);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .roll-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .roll-button:active {
+            transform: scale(1);
+        }
+
+        /* Media Queries for Responsiveness */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.5rem;
+            }
+            
+            td {
+                font-size: 1rem;
+            }
+            
+            img {
+                height: 120px;
+            }
+            
+            .roll-button {
+                padding: 10px 20px;
+                font-size: 1rem;
+            }
         }
     </style>
-    <link rel="icon" href=".\diceicon.jpg" >
-
-    <title>DICE GAME</title>
+    <link rel="icon" href="./diceicon.jpg">
+    <title>Dice Game</title>
 </head>
-    <body>
-    <div style="text-align: center;position: absolute;top:170px;left:35%;text-align: center;">
-    <h1  id="h1">Reload the page</h1></div>
-    <table style="position: absolute;top:330px;left:37%;">
+<body>
+    <h1 id="h1">Click "Roll Dice" to Play</h1>
+    <table>
         <tr>
             <td>Player 1</td>
             <td>Player 2</td>
-
         </tr>
         <tr>
-            <td><img id="img1" height="200px" src=".\dice1.png">
-            <img id="img2" height="200px" style="display: none;" src=".\dice2.png">
-           <img id="img3" height="200px" style="display: none;"src=".\dice3.png">
-            <img id="img4" height="200px" style="display: none;"src=".\dice4.png">
-            <img id="img5" height="200px" style="display: none;"src=".\dice5.png">
-            <img id="img6" height="200px" style="display: none;"src=".\dice6.png"></td>
-        <td>
-            <img id="img11" height="200px" src=".\dice1.png">
-                <img id="img22" height="200px" style="display: none;" src=".\dice2.png">
-               <img id="img33" height="200px" style="display: none;"src=".\dice3.png">
-                <img id="img44" height="200px" style="display: none;"src=".\dice4.png">
-                <img id="img55" height="200px" style="display: none;"src=".\dice5.png">
-                <img id="img66" height="200px" style="display: none;"src=".\dice6.png">
-        </td>
+            <td>
+                <img id="player1-dice" height="200px" src="./dice1.png" alt="Player 1 Dice">
+            </td>
+            <td>
+                <img id="player2-dice" height="200px" src="./dice1.png" alt="Player 2 Dice">
+            </td>
         </tr>
     </table>
+    <button class="roll-button" onclick="rollDice()">Roll Dice</button>
     <script>
-        var img1=document.getElementById("img1");
-        var img2=document.getElementById("img2");
-        var img3=document.getElementById("img3");
-        var img4=document.getElementById("img4");
-        var img5=document.getElementById("img5");
-        var img6=document.getElementById("img6");
-        var img11=document.getElementById("img11");
-        var img22=document.getElementById("img22");
-        var img33=document.getElementById("img33");
-        var img44=document.getElementById("img44");
-        var img55=document.getElementById("img55");
-        var img66=document.getElementById("img66");
-        var num1=Math.floor(Math.random()*6)+1;
-        var num2=Math.floor(Math.random()*6)+1;
-        console.log("num1"+num1+"num2="+num2);
-        
-        if (num1>num2){
-            document.getElementById("h1").innerHTML="<h1>Player 1 Wins🚩</h1>";
-            document.body.style.backgroundColor="blue";
-        }
-        else if (num1<num2){
-            document.getElementById("h1").innerHTML="<h1>Player 2 Wins🚩</h1>";
-            document.body.style.backgroundColor="yellow";
-        }
-        else{
-            document.getElementById("h1").innerHTML="<h1>🤝🤝Draw</h1>"
-            document.getElementById("h1").style.marginLeft="37%";
-            document.body.style.backgroundColor="green";
-        }
-        if (num1==2){
-            img1.style.display="none";
-            img2.style.display="block";
-        }
-        else if (num1==3){
-            img1.style.display="none";
-            
-            img3.style.display="block";
-        }
-        else if (num1==4){
-            img1.style.display="none";
-            
-            img4.style.display="block";
-        }
-        else if (num1==5){
-            img1.style.display="none";
-            
-            img5.style.display="block";
-        }
-        else if (num1==6){
-            img1.style.display="none";
-            img6.style.display="block";
-        }
-        if (num2==2){
-            img11.style.display="none";
-            img22.style.display="block";
-        }
-        else if (num2==3){
-            img11.style.display="none";
-            img33.style.display="block";
-        }
-        else if (num2==4){
-            img11.style.display="none";
-            img44.style.display="block";
-        }
-        else if (num2==5){
-            img11.style.display="none";
-            img55.style.display="block";
-        }
-        else if (num2==6){
-            img11.style.display="none";
-            img66.style.display="block";
+        function rollDice() {
+            const num1 = Math.floor(Math.random() * 6) + 1;
+            const num2 = Math.floor(Math.random() * 6) + 1;
+
+            document.getElementById('player1-dice').src = `./dice${num1}.png`;
+            document.getElementById('player2-dice').src = `./dice${num2}.png`;
+
+            const result = document.getElementById("h1");
+
+            if (num1 > num2) {
+                result.innerHTML = "<h1>Player 1 Wins 🚩</h1>";
+                document.body.style.backgroundColor = "#2196F3";
+            } else if (num1 < num2) {
+                result.innerHTML = "<h1>Player 2 Wins 🚩</h1>";
+                document.body.style.backgroundColor = "#FFEB3B";
+            } else {
+                result.innerHTML = "<h1>🤝 It's a Draw!</h1>";
+                document.body.style.backgroundColor = "#4CAF50";
+            }
         }
     </script>
 </body>
